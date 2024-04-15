@@ -32,10 +32,11 @@ print(tst)
 
 
 def selection_sort(number_lst):
-    for i in range(len(number_lst)):
+    ln = len(number_lst)
+    for i in range(ln):
         min_index = i
 
-        for j in range(i + 1, len(number_lst)):
+        for j in range(i + 1, ln):
 
             if number_lst[j] < number_lst[min_index]:
                 min_index = j
@@ -45,11 +46,27 @@ def selection_sort(number_lst):
     return number_lst
 
 
+def bubble_sort(number_list):
+    ln = len(number_list)
+    for i in range(ln - 1):
+        for j in range(0, ln - i - 1):
+            swpd = False
+            if number_list[j] > number_list[j + 1]:
+                swpd = True
+                (number_list[j], number_list[j + 1]) = (number_list[j + 1], number_list[j])
+        if not swpd:
+            return number_list
+
+
 my_lst = random.randint(200, size=(10))
 print(my_lst)
 
-tst_lst = selection_sort(my_lst)
-print(tst_lst)
+tst_lsts1 = selection_sort(my_lst)
+#print(tst_lsts1)
+
+tst_lsts2 = bubble_sort(my_lst)
+print(tst_lsts2)
+
 def main():
     pass
 
