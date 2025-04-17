@@ -27,13 +27,24 @@ def read_data(file_name):
     return dtst
 
 
-def selection_sort(numlist):
+def selection_sort(numlist,direc= 0):
+    """
+
+    :param numlist:
+    :param direction:
+    :return:
+    """
 
     for i in range(len(numlist)):
         minim = i
         for j in range(i+1, len(numlist)):
-            if numlist[j] < numlist[minim]:
-                minim = j
+            if direc == 0:
+                if numlist[j] < numlist[minim]:
+                    minim = j
+            else:
+                if numlist[j] > numlist[minim]:
+                    minim = j
+
 
         numlist[i], numlist[minim] = numlist[minim], numlist[i]
 
@@ -45,7 +56,7 @@ def main():
     data = read_data("numbers.csv")
 
     for i in data.keys():
-        print(selection_sort(data[i]))
+        print(selection_sort(data[i],1))
 
 if __name__ == '__main__':
     main()
